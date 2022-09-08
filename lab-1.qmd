@@ -1,6 +1,6 @@
 ---
 title: "Lab 1 - Data visualization"
-author: "[INSERT NAME]"
+author: "[Ann Chang]"
 format: pdf
 editor: visual
 ---
@@ -28,11 +28,8 @@ library(tidyverse)
 
 ## Exercise 4
 
-
 ## Exercise 5
 
-
 ## Exercise 6
-
 
 ## Exercise 7
