@@ -64,7 +64,8 @@ ggplot(data = midwest,
 
 ## Exercise 3
 
-(Type your answer to Exercise 3 here. Add code chunks as needed. Don't forget to label your code chunk. Do not use spaces in code chunk labels.)
+There seems to be a negative correlation between the percentage of people below the poverty line and the percentage of people with a college degree. Illinois 
+seems to have relatively more outlying counties where the percentage of below poverty individuals is larger than what would be expected from the percentage of people with a college degree. This is also seen in some counties in Ohio. The counties in Wisconsin are relatively clustered closely together, with no counties' percentage of individuals below poverty exceeding above 23%. 
 
 ## Exercise 4
 
