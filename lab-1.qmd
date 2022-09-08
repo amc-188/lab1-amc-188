@@ -69,6 +69,37 @@ seems to have relatively more outlying counties where the percentage of below po
 
 ## Exercise 4
 
+```{r}
+#| label: ex-4 scatterplots separated by state
+#| message: false
+
+state.labs <- c("Illinois", "Indiana", "Michigan", "Ohio", "Wisconsin")
+names(state.labs) <- c("IL", "IN", "MI", "OH", "WI")
+
+ggplot(data = midwest, 
+       aes(x = percollege,
+           y = percbelowpoverty,
+           color = state)) +
+  geom_point(alpha = 0.6) +
+  facet_wrap(~state, 
+             labeller = labeller(state = state.labs)
+             ) +
+  geom_smooth(se = FALSE) +
+  scale_color_viridis_d() +
+  labs(
+    x = "Percentage of Individuals with a College Degree",
+    y = "Percentage of Individuals Below Poverty ",
+    title = "Relationship Between College Degree Aquisition and Poverty Level,
+                            by State",
+    color = "State"
+    ) +
+  scale_color_discrete(labels = state.labs)
+```
+The faceted scatterplot is much more preferable than the original scatterplot
+from Exercise 2 because it is much easier to see the relationship between these
+two percentages for each individual state. This relationship for each state was
+much harder to see in the plot from Exercise 2 because the points were too crowded together to be able to separate the states, even with the differential coloring. 
+
 ## Exercise 5
 
 ## Exercise 6
