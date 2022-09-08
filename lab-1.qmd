@@ -3,6 +3,8 @@ title: "Lab 1 - Data visualization"
 author: "[Ann Chang]"
 format: pdf
 editor: visual
+editor_options: 
+  chunk_output_type: inline
 ---
 
 ## Load Packages
@@ -12,11 +14,30 @@ editor: visual
 #| message: false
 
 library(tidyverse)
+library(viridis)
+
 ```
 
 ## Exercise 1
 
-(Type your answer to Exercise 1 here. Add code chunks as needed. Don't forget to label your code chunk. Do not use spaces in code chunk labels.)
+```{r}
+#| label: histogram of population density
+
+ggplot(data = midwest, 
+       aes(x = popdensity)) +
+  geom_histogram(binwidth = 10000) +
+  labs(
+    x = "Population Density (person/unit area)",
+    y = "Frequency",
+    title = 
+      "    Population Densities of Midwest Counties
+               (2000 US Census)"
+    )
+
+```
+- The distribution of the data seem to be right-skewed.
+- There seem to be some outliers of relatively large population densities, such
+as the incidences beyond 50000 people/unit area. 
 
 ## Exercise 2
 
