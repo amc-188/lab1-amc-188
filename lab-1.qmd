@@ -32,8 +32,8 @@ ggplot(data = midwest,
     x = "Population Density (person/unit area)",
     y = "Frequency",
     title = 
-      "    Population Densities of Midwest Counties
-               (2000 US Census)"
+      "        Population Densities of Midwest Counties
+                          (2000 US Census)"
     )
 
 ```
@@ -91,8 +91,8 @@ ggplot(data = midwest,
   labs(
     x = "Percentage of Individuals with a College Degree",
     y = "Percentage of Individuals Below Poverty ",
-    title = "Relationship Between College Degree Aquisition and Poverty Level,
-                            by State",
+    title = "Relationship Between College Degree Aquisition 
+                    and Poverty Level, by State",
     color = "State"
     ) +
   scale_color_discrete(labels = state.labs)
@@ -179,7 +179,8 @@ ggplot(data = midwest,
   labs(
     x = "% college educated",
     y = "Population density (person / unit area)",
-    title = "Do people with college degrees tend to live in denser areas?",
+    title = "Do people with college degrees tend 
+           to live in denser areas?",
     color = "% below poverty line"
   )
 ```
