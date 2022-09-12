@@ -102,6 +102,67 @@ much harder to see in the plot from Exercise 2 because the points were too crowd
 
 ## Exercise 5
 
+```{r}
+state.labs <- c("Illinois", "Indiana", "Michigan", "Ohio", "Wisconsin")
+names(state.labs) <- c("IL", "IN", "MI", "OH", "WI")
+
+ggplot(data = midwest,
+       aes(x = state,
+           y = area,
+           fill = state)
+       ) +
+  geom_boxplot(
+    alpha = 0.5,
+    show.legend = FALSE) +
+  scale_fill_discrete(labels = state.labs) +
+  labs(
+    x = "State",
+    y = "Area of County",
+    title = "Distribution of Geographical Area of Counties per State",
+    fill = "State",
+    ) +
+  scale_fill_viridis_d()
+  
+```
+-The states of Wisconsin, Michigan, and Illinois have counties that are on the larger side relative to the average county size of Indiana and Ohio. The spread of the data for county geographical area is more widespread for the states of Illinois, Michigan, and Wisconsin in relation to Indiana and Ohio as well. 
+
+- MI has the county with the largest geographical area. This is identified by the outlier that is represented by a point that lies higher than the others in relation to the x-axis. 
+
+
 ## Exercise 6
 
+```{r}
+
+midwest <- midwest |> 
+  mutate(metro = if_else(inmetro == 1, "Yes", "No"))
+
+ggplot(data = midwest, aes(
+       fill = inmetro,
+       x = state, 
+       y = metro
+       )) +
+  geom_bar(position = "fill", stat = "identity")
+  
+  
+```
+
 ## Exercise 7
+
+```{r}
+
+ggplot(data = midwest, 
+       aes(x = percollege,
+           y = popdensity,
+           color = percbelowpoverty
+       )) +
+  geom_point(alpha = 0.5, size = 2) +
+  facet_wrap(~state) +
+  theme_minimal() +
+  labs(
+    x = "% college educated",
+    y = "Population density (person / unit area)",
+    title = "Do people with college degrees tend to live in denser areas?",
+    color = "% below poverty line"
+  )
+```
+
