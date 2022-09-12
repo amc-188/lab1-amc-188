@@ -12,6 +12,7 @@ editor_options:
 ```{r}
 #| label: load-packages
 #| message: false
+#| warning: false
 
 library(tidyverse)
 library(viridis)
@@ -79,7 +80,8 @@ names(state.labs) <- c("IL", "IN", "MI", "OH", "WI")
 ggplot(data = midwest, 
        aes(x = percollege,
            y = percbelowpoverty,
-           color = state)) +
+           color = state)
+       ) +
   geom_point(alpha = 0.6) +
   facet_wrap(~state, 
              labeller = labeller(state = state.labs)
@@ -103,6 +105,9 @@ much harder to see in the plot from Exercise 2 because the points were too crowd
 ## Exercise 5
 
 ```{r}
+#| label: ex-5 boxplots of geographical area of state counties
+#| message: false  
+
 state.labs <- c("Illinois", "Indiana", "Michigan", "Ohio", "Wisconsin")
 names(state.labs) <- c("IL", "IN", "MI", "OH", "WI")
 
@@ -113,8 +118,11 @@ ggplot(data = midwest,
        ) +
   geom_boxplot(
     alpha = 0.5,
-    show.legend = FALSE) +
-  scale_fill_discrete(labels = state.labs) +
+    show.legend = FALSE
+    ) +
+  scale_fill_discrete(
+    labels = state.labs
+    ) +
   labs(
     x = "State",
     y = "Area of County",
@@ -124,7 +132,7 @@ ggplot(data = midwest,
   scale_fill_viridis_d()
   
 ```
--The states of Wisconsin, Michigan, and Illinois have counties that are on the larger side relative to the average county size of Indiana and Ohio. The spread of the data for county geographical area is more widespread for the states of Illinois, Michigan, and Wisconsin in relation to Indiana and Ohio as well. 
+- The states of Wisconsin, Michigan, and Illinois have counties that are on the larger side relative to the average county size of Indiana and Ohio. The spread of the data for county geographical area is more widespread for the states of Illinois, Michigan, and Wisconsin in relation to Indiana and Ohio as well. 
 
 - MI has the county with the largest geographical area. This is identified by the outlier that is represented by a point that lies higher than the others in relation to the x-axis. 
 
@@ -132,23 +140,33 @@ ggplot(data = midwest,
 ## Exercise 6
 
 ```{r}
+#| label: ex-6 percent stacked barplot of metro counties per state
+#| message: false
 
 midwest <- midwest |> 
   mutate(metro = if_else(inmetro == 1, "Yes", "No"))
 
-ggplot(data = midwest, aes(
-       fill = inmetro,
-       x = state, 
-       y = metro
-       )) +
-  geom_bar(position = "fill", stat = "identity")
-  
+ggplot(data = midwest) +
+  geom_bar(
+    mapping = aes(x = state, fill = metro), 
+    position = "fill"
+    ) +
+  labs(
+    x = "State",
+    y = " ", 
+    fill = "County is in \nmetropolitan area:",
+    title = "     Proportion of Metropolitan Counties
+                   in Midwest States" 
+    )
   
 ```
+According to the plot, it can be seen that most counties in all the states presented are located  outside of metropolitan areas. Of the states observed in this dataset, Ohio has the highest proportion of counties that are located in metropolitan areas. 
 
 ## Exercise 7
 
 ```{r}
+#| label: faceted scatterplot pop density~college education per state
+#| message: false
 
 ggplot(data = midwest, 
        aes(x = percollege,
